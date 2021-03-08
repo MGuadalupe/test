@@ -1,0 +1,36 @@
+@font-face {
+  font-family: 'Morton-bold';
+  font-style: normal;
+  font-display: swap;
+  src: url('~assets/fonts/Morton-Bold.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Morton-Regular';
+  font-style: normal;
+  font-display: swap;
+  src: url('~assets/fonts/Morton-regular.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Butler_Bold';
+  font-style: normal;
+  font-display: swap;
+  src: url('~assets/fonts/Butler_Bold.otf') format('opentype');
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: $titles, 'Open-sans';
+  color: $font-color;
+}
+h2 {
+  font-size: 105px;
+  letter-spacing: -3px;
+  color: $font-color;
+}
+p {
+  font-family: $paragraph, 'Open-sans';
+  font-size: 19px;
+  color: $font-color;
+}

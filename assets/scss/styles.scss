@@ -1,0 +1,131 @@
+@import '_vars.scss';
+@import 'tipography.scss';
+@import 'buttons.scss';
+html,
+body {
+  background-color: $primary-color;
+}
+.vh-100 {
+  height: 100vh;
+}
+.center-all {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.title {
+  line-height: 1;
+  margin-bottom: 0;
+}
+
+.text-container {
+  height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/*******nav***/
+.nav,
+.uk-navbar-toggle {
+  right: 20px;
+  z-index: 3;
+  background-color: $primary-color !important;
+  height: 50px;
+  border-radius: 100%;
+  min-height: 50px !important;
+}
+.uk-navbar {
+  margin-top: 25px;
+}
+.uk-navbar-toggle {
+  color: white !important;
+}
+/****slider******/
+.slider {
+  height: 100vh;
+}
+.slider-columns {
+  padding: 0;
+}
+.slide-icon {
+  margin-left: 12px;
+  height: 24px;
+}
+.indexSlider span {
+  margin-left: 8px;
+}
+.chevron-slide-1,
+.chevron-slide-2 {
+  position: absolute;
+  z-index: 1;
+  width: 45px;
+  height: 45px;
+  background-color: white;
+  color: #000 !important;
+  border: white;
+}
+.chevron-slide-1 {
+  top: calc(100% - 67px);
+  left: calc(50% - 45px);
+}
+.chevron-slide-2 {
+  top: calc(100% - 67px - 45px);
+  left: 50%;
+}
+.slide-image {
+  height: 100vh;
+}
+
+.social-media span {
+  align-self: flex-start;
+  color: white;
+}
+
+@media (max-width: 1200px) {
+  .title {
+    font-size: 70px;
+  }
+}
+@media (max-width: 640px) {
+  .title {
+    font-size: 55px;
+  }
+
+  .vueperslides,
+  .slider {
+    height: 420px !important;
+    width: auto;
+  }
+
+  .slider-columns {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .chevron-slide-2 {
+    left: initial;
+    right: 0;
+    top: 375px;
+  }
+  .chevron-slide-1 {
+    left: initial;
+    right: calc(0px + 44px);
+    top: 420px;
+  }
+  .text-container {
+    max-width: 300px;
+    p {
+      font-size: 14px;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .text-container {
+    margin-bottom: 50px;
+    p {
+      min-width: 250px;
+    }
+  }
+}
