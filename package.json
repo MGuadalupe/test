@@ -17,6 +17,7 @@
   "dependencies": {
     "core-js": "^3.8.3",
     "gsap": "^3.6.0",
+    "node-sass": "^5.0.0",
     "nuxt": "^2.14.12",
     "ui-kit": "^0.20.2",
     "uikit": "^3.6.17",
