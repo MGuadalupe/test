@@ -22,7 +22,7 @@ export default {
   ],
   loading: {
     color: '#ffffff',
-    duration: 800,
+    duration: 1200,
     continuous: true,
   },
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins

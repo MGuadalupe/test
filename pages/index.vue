@@ -122,32 +122,31 @@ export default {
   mounted() {
     this.$nextTick(() => {
       this.$nuxt.$loading.start()
-      setTimeout(() => this.$nuxt.$loading.finish(), 800)
+      setTimeout(() => this.$nuxt.$loading.finish(), 1200)
     })
     this.loading = false
-    if (this.loading === false) {
-      this.slideImage()
-      gsap.fromTo(
-        '.social-media',
-        { y: 120 },
-        { duration: 0.8, y: 0, delay: 0.3 }
-      )
-      gsap.fromTo(
-        '.chevron-slide-2',
-        { y: 120 },
-        { duration: 0.8, y: 0, delay: 0.5 }
-      )
-      gsap.fromTo(
-        '.chevron-slide-1',
-        { y: 100 },
-        { duration: 0.8, y: 0, delay: 0.9 }
-      )
-      gsap.fromTo(
-        '.vueperslide:first-child',
-        { scale: 2, opacity: 0 },
-        { duration: 0.8, scale: 1, opacity: 1 }
-      )
-    }
+
+    this.slideImage()
+    gsap.fromTo(
+      '.social-media',
+      { y: 120 },
+      { duration: 0.8, y: 0, delay: 0.3 }
+    )
+    gsap.fromTo(
+      '.chevron-slide-2',
+      { y: 120 },
+      { duration: 0.8, y: 0, delay: 0.5 }
+    )
+    gsap.fromTo(
+      '.chevron-slide-1',
+      { y: 100 },
+      { duration: 0.8, y: 0, delay: 0.9 }
+    )
+    gsap.fromTo(
+      '.vueperslide:first-child',
+      { scale: 2, opacity: 0 },
+      { duration: 0.8, scale: 1, opacity: 1 }
+    )
   },
   methods: {
     slideImage() {
