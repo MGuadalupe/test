@@ -22,7 +22,8 @@ export default {
   ],
   loading: {
     color: '#ffffff',
-    duration: 5000,
+    duration: 800,
+    continuous: true,
   },
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: ['~/plugins/uikit.js', '~/plugins/vueperslides'],

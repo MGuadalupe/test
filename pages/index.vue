@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="!loading">
     <div>
       <nav
         class="uk-navbar uk-navbar-container uk-margin uk-position-absolute nav"
@@ -93,7 +93,7 @@ export default {
   },
   data: () => ({
     textIndex: 0,
-    isLoading: false,
+    loading: true,
     slider: [
       {
         icon: 'images/icons/1.svg',
@@ -118,32 +118,36 @@ export default {
       },
     ],
   }),
+
   mounted() {
     this.$nextTick(() => {
       this.$nuxt.$loading.start()
-      setTimeout(() => this.$nuxt.$loading.finish(), 500)
+      setTimeout(() => this.$nuxt.$loading.finish(), 800)
     })
-    this.slideImage()
-    gsap.fromTo(
-      '.social-media',
-      { y: 120 },
-      { duration: 0.8, y: 0, delay: 0.3 }
-    )
-    gsap.fromTo(
-      '.chevron-slide-2',
-      { y: 120 },
-      { duration: 0.8, y: 0, delay: 0.5 }
-    )
-    gsap.fromTo(
-      '.chevron-slide-1',
-      { y: 100 },
-      { duration: 0.8, y: 0, delay: 0.9 }
-    )
-    gsap.fromTo(
-      '.vueperslide:first-child',
-      { scale: 2, opacity: 0 },
-      { duration: 0.8, scale: 1, opacity: 1 }
-    )
+    this.loading = false
+    if (this.loading === false) {
+      this.slideImage()
+      gsap.fromTo(
+        '.social-media',
+        { y: 120 },
+        { duration: 0.8, y: 0, delay: 0.3 }
+      )
+      gsap.fromTo(
+        '.chevron-slide-2',
+        { y: 120 },
+        { duration: 0.8, y: 0, delay: 0.5 }
+      )
+      gsap.fromTo(
+        '.chevron-slide-1',
+        { y: 100 },
+        { duration: 0.8, y: 0, delay: 0.9 }
+      )
+      gsap.fromTo(
+        '.vueperslide:first-child',
+        { scale: 2, opacity: 0 },
+        { duration: 0.8, scale: 1, opacity: 1 }
+      )
+    }
   },
   methods: {
     slideImage() {
