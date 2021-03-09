@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>
+    <div @before-enter="beforeEnter">
       <nav
         class="uk-navbar uk-navbar-container uk-margin uk-position-absolute nav"
       >
@@ -91,8 +91,16 @@ export default {
     VueperSlides,
     VueperSlide,
   },
+  transition: {
+    beforeEnter(el) {
+      gsap.set(el.children, {
+        opacity: 0,
+      })
+    },
+  },
   data: () => ({
     textIndex: 0,
+    isLoading: true,
 
     slider: [
       {
@@ -122,7 +130,7 @@ export default {
   mounted() {
     this.$nextTick(() => {
       this.$nuxt.$loading.start()
-      setTimeout(() => this.$nuxt.$loading.finish(), 1200)
+      setTimeout(() => this.$nuxt.$loading.finish(), 3000)
     })
 
     this.slideImage()
@@ -148,6 +156,9 @@ export default {
     )
   },
   methods: {
+    finishLoading() {
+      this.isLoading = false
+    },
     slideImage() {
       this.textIndex = this.$refs.slider.slides.current
       gsap.fromTo(
