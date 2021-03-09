@@ -1,6 +1,7 @@
 <template>
   <div>
     <div>
+      <div class="background-loading"></div>
       <nav
         class="uk-navbar uk-navbar-container uk-margin uk-position-absolute nav"
       >
@@ -27,7 +28,7 @@
                       slider[textIndex].icon.indexOf('.')
                     )
                   "
-                  class="slide-icon"
+                  class="slide-icon animatedContent"
                 />
               </div>
 
@@ -99,7 +100,7 @@ export default {
 
   data: () => ({
     textIndex: 0,
-    isLoading: true,
+    isLoad: false,
 
     slider: [
       {
@@ -127,31 +128,40 @@ export default {
   }),
 
   mounted() {
-    const tl1 = gsap.timeline()
-    const tl2 = gsap.timeline()
-    const tl3 = gsap.timeline()
-    tl1.fromTo(
+    const tl = gsap.timeline()
+    const tlbg = gsap.timeline()
+    tlbg.fromTo(
+      '.background-loading',
+      { opacity: 1, display: 'block' },
+      { duration: 0.5, opacity: 0, display: 'none' }
+    )
+    tl.fromTo(
       '.vueperslide:first-child',
-      { scale: 2, opacity: 0 },
-      { duration: 0.8, scale: 1, opacity: 1 }
+      { scale: 2 },
+      { duration: 0.8, scale: 1 }
     )
-    tl2.fromTo(
-      '.animatedContent',
-      { y: 120, opacity: 0 },
-      { duration: 0.8, y: 0, opacity: 1, delay: 0.3, stagger: 0.2 }
-    )
-    tl3.fromTo(
-      '.hr',
-      { width: 0, opacity: 0 },
-      { duration: 0.8, width: '100%', opacity: 1, delay: 0.8 }
-    )
+
+    this.animation()
   },
   methods: {
-    finishLoading() {
-      this.isLoading = false
-    },
     slideImage() {
       this.textIndex = this.$refs.slider.slides.current
+      this.animation()
+    },
+    animation() {
+      const tl2 = gsap.timeline()
+      const tl3 = gsap.timeline()
+
+      tl2.fromTo(
+        '.animatedContent',
+        { y: 20, opacity: 0 },
+        { duration: 0.8, y: 0, opacity: 1, delay: 0.3, stagger: 0.2 }
+      )
+      tl3.fromTo(
+        '.hr',
+        { width: 0, opacity: 0 },
+        { duration: 0.8, width: '100%', opacity: 1, delay: 0.8 }
+      )
     },
   },
 }
