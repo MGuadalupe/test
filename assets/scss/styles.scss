@@ -4,17 +4,17 @@
 @font-face {
   font-family: 'Morton-bold';
   font-style: normal;
-  src: asset-path('/assets/fonts/Morton-Bold.otf') format('opentype');
+  src: url('@/static/fonts/Morton-Bold.otf') format('opentype');
 }
 @font-face {
   font-family: 'Morton-Regular';
   font-style: normal;
-  src: asset-path('/assets/fonts/Morton-Regular.otf') format('opentype');
+  src: url('@/static/fonts/Morton-Regular.otf') format('opentype');
 }
 @font-face {
   font-family: 'Butler_Bold';
   font-style: normal;
-  src: asset-path('/assets/fonts/Butler_Bold.otf') format('opentype');
+  src: url('@/static/fonts/Butler_Bold.otf') format('opentype');
 }
 html,
 body {
