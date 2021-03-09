@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!loading">
+  <div>
     <div>
       <nav
         class="uk-navbar uk-navbar-container uk-margin uk-position-absolute nav"
@@ -93,7 +93,7 @@ export default {
   },
   data: () => ({
     textIndex: 0,
-    loading: true,
+
     slider: [
       {
         icon: 'images/icons/1.svg',
@@ -124,7 +124,6 @@ export default {
       this.$nuxt.$loading.start()
       setTimeout(() => this.$nuxt.$loading.finish(), 1200)
     })
-    this.loading = false
 
     this.slideImage()
     gsap.fromTo(
