@@ -1,6 +1,24 @@
 @import '_vars.scss';
 @import 'tipography.scss';
 @import 'buttons.scss';
+@font-face {
+  font-family: 'Morton-bold';
+  font-style: normal;
+  font-display: swap;
+  src: url('/assets/fonts/Morton-Bold.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Morton-Regular';
+  font-style: normal;
+  font-display: swap;
+  src: url('/assets/fonts/Morton-regular.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Butler_Bold';
+  font-style: normal;
+  font-display: swap;
+  src: url('/assets/fonts/Butler_Bold.otf') format('opentype');
+}
 html,
 body {
   background-color: $primary-color;
