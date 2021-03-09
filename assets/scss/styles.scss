@@ -1,25 +1,44 @@
 @import '_vars.scss';
-@import 'tipography.scss';
+
 @import 'buttons.scss';
 @font-face {
   font-family: 'Morton-bold';
   font-style: normal;
-  src: url('/static/fonts/Morton-Bold.otf') format('opentype');
+  src: asset-url('/assets/fonts/Morton-Bold.otf') format('opentype');
 }
 @font-face {
   font-family: 'Morton-Regular';
   font-style: normal;
-  src: url('/static/fonts/Morton-Regular.otf') format('opentype');
+  src: asset-url('/assets/fonts/Morton-Regular.otf') format('opentype');
 }
 @font-face {
   font-family: 'Butler_Bold';
   font-style: normal;
-  src: url('/static/fonts/Butler_Bold.otf') format('opentype');
+  src: asset-url('/assets/fonts/Butler_Bold.otf') format('opentype');
 }
 html,
 body {
   background-color: $primary-color;
 }
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: $titles;
+  color: $font-color;
+}
+h2 {
+  font-size: 105px;
+  letter-spacing: -3px;
+  color: $font-color;
+}
+p {
+  font-family: $paragraph;
+  font-size: 19px;
+  color: $font-color;
+}
+
 .vh-100 {
   height: 100vh;
 }
