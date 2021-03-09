@@ -5,19 +5,19 @@
   font-family: 'Morton-bold';
   font-style: normal;
   font-display: swap;
-  src: url('/assets/fonts/Morton-Bold.otf') format('opentype');
+  src: font-url('/assets/fonts/Morton-Bold.otf') format('opentype');
 }
 @font-face {
   font-family: 'Morton-Regular';
   font-style: normal;
   font-display: swap;
-  src: url('/assets/fonts/Morton-regular.otf') format('opentype');
+  src: font-url('/assets/fonts/Morton-regular.otf') format('opentype');
 }
 @font-face {
   font-family: 'Butler_Bold';
   font-style: normal;
   font-display: swap;
-  src: url('/assets/fonts/Butler_Bold.otf') format('opentype');
+  src: font-url('/assets/fonts/Butler_Bold.otf') format('opentype');
 }
 html,
 body {
