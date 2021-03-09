@@ -4,17 +4,17 @@
 @font-face {
   font-family: 'Morton-bold';
   font-style: normal;
-  src: font-url('/assets/fonts/Morton-Bold.otf') format('opentype');
+  src: url('/static/fonts/Morton-Bold.otf') format('opentype');
 }
 @font-face {
   font-family: 'Morton-Regular';
   font-style: normal;
-  src: font-url('/assets/fonts/Morton-Regular.otf') format('opentype');
+  src: url('/static/fonts/Morton-Regular.otf') format('opentype');
 }
 @font-face {
   font-family: 'Butler_Bold';
   font-style: normal;
-  src: url('/assets/fonts/Butler_Bold.otf') format('opentype');
+  src: url('/static/fonts/Butler_Bold.otf') format('opentype');
 }
 html,
 body {
@@ -36,6 +36,7 @@ body {
 
 .text-container {
   height: calc(100vh - 70px);
+  min-height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -130,6 +131,7 @@ body {
   }
   .text-container {
     max-width: 300px;
+    min-height: 500px;
     p {
       font-size: 14px;
     }
