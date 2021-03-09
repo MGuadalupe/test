@@ -1,80 +1,92 @@
 <template>
   <div>
-    <nav
-      class="uk-navbar uk-navbar-container uk-margin uk-position-absolute nav"
-    >
-      <div class="uk-navbar-right">
-        <a class="uk-navbar-toggle" uk-navbar-toggle-icon href="#"></a>
-      </div>
-    </nav>
-    <div class="uk-flex slider-columns">
-      <div class="uk-width-1-2@s">
-        <div
-          class="uk-height-1-1 uk-flex uk-flex-column uk-flex-middle uk-flex-center"
-        >
-          <div class="uk-width-3-4 text-container">
-            <div class="uk-flex">
-              <h3 class="indexSlider">
-                0{{ textIndex + 1 }}
-                <span>|</span>
-              </h3>
-              <img
-                :src="slider[textIndex].icon"
-                :alt="
-                  slider[textIndex].icon.substring(
-                    6,
-                    slider[textIndex].icon.indexOf('.')
-                  )
-                "
-                class="slide-icon"
-              />
-            </div>
-
-            <h2 class="title">{{ slider[textIndex].title }}</h2>
-            <hr class="hr" />
-            <p class="paragraph">
-              {{ slider[textIndex].paragraph }}
-            </p>
-            <div>
-              <button class="btn-primary">Saber más</button>
-            </div>
-          </div>
-          <div class="social-media uk-width-3-4 uk-visible@s">
-            <span uk-icon="facebook" class="uk-margin-right"></span>
-            <span uk-icon="twitter" class="uk-margin-right"></span>
-            <span uk-icon="instagram"></span>
-          </div>
-        </div>
-      </div>
-      <div class="slider uk-width-1-2@s">
-        <vueper-slides
-          ref="slider"
-          fixed-height="100vh"
-          :arrows="false"
-          :bullets="false"
-          class="slider"
-        >
-          <vueper-slide
-            v-for="(slide, indexSlider) in slider"
-            :key="indexSlider"
-            :image="slide.image"
-          />
-        </vueper-slides>
+    <div v-if="isLoading" class="uk-cover-container" uk-height-viewport>
+      <div class="uk-position-center uk-position-small">
+        <half-circle-spinner
+          :animation-duration="1000"
+          :size="60"
+          color="#ffffff"
+        />
       </div>
     </div>
-    <div>
-      <button
-        class="chevron-slide-1"
-        @click="$refs.slider.previous(), slideImage()"
+
+    <div v-else>
+      <nav
+        class="uk-navbar uk-navbar-container uk-margin uk-position-absolute nav"
       >
-        <span uk-icon="icon: chevron-left; ratio: 1.5"></span>
-      </button>
-      <button
-        class="chevron-slide-2"
-        @click="$refs.slider.next(), slideImage()"
-      >
-        <span uk-icon="icon: chevron-right; ratio: 1.5"></span>
-      </button>
+        <div class="uk-navbar-right">
+          <a class="uk-navbar-toggle" uk-navbar-toggle-icon href="#"></a>
+        </div>
+      </nav>
+      <div class="uk-flex slider-columns">
+        <div class="uk-width-1-2@s">
+          <div
+            class="uk-height-1-1 uk-flex uk-flex-column uk-flex-middle uk-flex-center"
+          >
+            <div class="uk-width-3-4 text-container">
+              <div class="uk-flex">
+                <h3 class="indexSlider">
+                  0{{ textIndex + 1 }}
+                  <span>|</span>
+                </h3>
+                <img
+                  :src="slider[textIndex].icon"
+                  :alt="
+                    slider[textIndex].icon.substring(
+                      6,
+                      slider[textIndex].icon.indexOf('.')
+                    )
+                  "
+                  class="slide-icon"
+                />
+              </div>
+
+              <h2 class="title">{{ slider[textIndex].title }}</h2>
+              <hr class="hr" />
+              <p class="paragraph">
+                {{ slider[textIndex].paragraph }}
+              </p>
+              <div>
+                <button class="btn-primary">Saber más</button>
+              </div>
+            </div>
+            <div class="social-media uk-width-3-4 uk-visible@s">
+              <span uk-icon="facebook" class="uk-margin-right"></span>
+              <span uk-icon="twitter" class="uk-margin-right"></span>
+              <span uk-icon="instagram"></span>
+            </div>
+          </div>
+        </div>
+        <div class="slider uk-width-1-2@s" :touchable="false">
+          <vueper-slides
+            ref="slider"
+            fixed-height="100vh"
+            :arrows="false"
+            :bullets="false"
+            class="slider"
+          >
+            <vueper-slide
+              v-for="(slide, indexSlider) in slider"
+              :key="indexSlider"
+              :image="slide.image"
+            />
+          </vueper-slides>
+        </div>
+      </div>
+      <div>
+        <button
+          class="chevron-slide-1"
+          @click="$refs.slider.previous(), slideImage()"
+        >
+          <span uk-icon="icon: chevron-left; ratio: 1.5"></span>
+        </button>
+        <button
+          class="chevron-slide-2"
+          @click="$refs.slider.next(), slideImage()"
+        >
+          <span uk-icon="icon: chevron-right; ratio: 1.5"></span>
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -82,15 +94,17 @@
 <script>
 import { VueperSlides, VueperSlide } from 'vueperslides'
 import 'vueperslides/dist/vueperslides.css'
+import { HalfCircleSpinner } from 'epic-spinners'
 import { gsap } from 'gsap'
 export default {
   components: {
     VueperSlides,
     VueperSlide,
+    HalfCircleSpinner,
   },
   data: () => ({
     textIndex: 0,
-
+    isLoading: false,
     slider: [
       {
         icon: 'images/icons/1.svg',
@@ -116,6 +130,7 @@ export default {
     ],
   }),
   mounted() {
+    this.isLoading = false
     this.slideImage()
     gsap.fromTo(
       '.social-media',

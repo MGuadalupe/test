@@ -81,6 +81,10 @@ p {
 .slider {
   height: 100vh;
 }
+.slider,
+.slider img {
+  min-height: 500px;
+}
 .slider-columns {
   padding: 0;
 }
@@ -149,10 +153,11 @@ p {
     top: 420px;
   }
   .text-container {
-    max-width: 300px;
+    height: auto;
     min-height: 500px;
     p {
       font-size: 14px;
+      margin-bottom: 50px;
     }
   }
 }
