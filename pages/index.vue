@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div @before-enter="beforeEnter">
+    <div>
       <nav
         class="uk-navbar uk-navbar-container uk-margin uk-position-absolute nav"
       >
@@ -91,13 +91,7 @@ export default {
     VueperSlides,
     VueperSlide,
   },
-  transition: {
-    beforeEnter(el) {
-      gsap.set(el.children, {
-        opacity: 0,
-      })
-    },
-  },
+
   data: () => ({
     textIndex: 0,
     isLoading: true,
