@@ -21,6 +21,7 @@
     "nuxt": "^2.14.12",
     "ui-kit": "^0.20.2",
     "uikit": "^3.6.17",
+    "vue-loader": "^15.9.6",
     "vueperslides": "^2.13.0"
   },
   "devDependencies": {
