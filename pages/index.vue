@@ -15,7 +15,7 @@
           >
             <div class="uk-width-3-4 text-container">
               <div class="uk-flex">
-                <h3 class="indexSlider">
+                <h3 class="indexSlider animatedContent">
                   0{{ textIndex + 1 }}
                   <span>|</span>
                 </h3>
@@ -31,16 +31,21 @@
                 />
               </div>
 
-              <h2 class="title">{{ slider[textIndex].title }}</h2>
+              <h2 class="title animatedContent">
+                {{ slider[textIndex].title }}
+              </h2>
               <hr class="hr" />
-              <p class="paragraph">
-                {{ slider[textIndex].paragraph }}
-              </p>
-              <div>
-                <button class="btn-primary">Saber más</button>
+              <div class="animatedContent">
+                <p class="paragraph">
+                  {{ slider[textIndex].paragraph }}
+                </p>
+
+                <div>
+                  <button class="btn-primary">Saber más</button>
+                </div>
               </div>
             </div>
-            <div class="social-media uk-width-3-4 uk-visible@s">
+            <div class="social-media uk-width-3-4 uk-visible@s animatedContent">
               <span uk-icon="facebook" class="uk-margin-right"></span>
               <span uk-icon="twitter" class="uk-margin-right"></span>
               <span uk-icon="instagram"></span>
@@ -65,16 +70,16 @@
       </div>
       <div>
         <button
-          class="chevron-slide-1"
-          @click="$refs.slider.previous(), slideImage()"
-        >
-          <span uk-icon="icon: chevron-left; ratio: 1.5"></span>
-        </button>
-        <button
-          class="chevron-slide-2"
+          class="chevron-slide-2 animatedContent"
           @click="$refs.slider.next(), slideImage()"
         >
           <span uk-icon="icon: chevron-right; ratio: 1.5"></span>
+        </button>
+        <button
+          class="chevron-slide-1 animatedContent"
+          @click="$refs.slider.previous(), slideImage()"
+        >
+          <span uk-icon="icon: chevron-left; ratio: 1.5"></span>
         </button>
       </div>
     </div>
@@ -122,31 +127,23 @@ export default {
   }),
 
   mounted() {
-    this.$nextTick(() => {
-      this.$nuxt.$loading.start()
-      setTimeout(() => this.$nuxt.$loading.finish(), 3000)
-    })
-
-    this.slideImage()
-    gsap.fromTo(
-      '.social-media',
-      { y: 120 },
-      { duration: 0.8, y: 0, delay: 0.3 }
-    )
-    gsap.fromTo(
-      '.chevron-slide-2',
-      { y: 120 },
-      { duration: 0.8, y: 0, delay: 0.5 }
-    )
-    gsap.fromTo(
-      '.chevron-slide-1',
-      { y: 100 },
-      { duration: 0.8, y: 0, delay: 0.9 }
-    )
-    gsap.fromTo(
+    const tl1 = gsap.timeline()
+    const tl2 = gsap.timeline()
+    const tl3 = gsap.timeline()
+    tl1.fromTo(
       '.vueperslide:first-child',
       { scale: 2, opacity: 0 },
       { duration: 0.8, scale: 1, opacity: 1 }
+    )
+    tl2.fromTo(
+      '.animatedContent',
+      { y: 120, opacity: 0 },
+      { duration: 0.8, y: 0, opacity: 1, delay: 0.3, stagger: 0.2 }
+    )
+    tl3.fromTo(
+      '.hr',
+      { width: 0, opacity: 0 },
+      { duration: 0.8, width: '100%', opacity: 1, delay: 0.8 }
     )
   },
   methods: {
@@ -155,36 +152,6 @@ export default {
     },
     slideImage() {
       this.textIndex = this.$refs.slider.slides.current
-      gsap.fromTo(
-        '.indexSlider',
-        { y: 50, opacity: 0 },
-        { duration: 0.8, y: 0, opacity: 1 }
-      )
-      gsap.fromTo(
-        '.slide-icon',
-        { y: 100, opacity: 0 },
-        { duration: 0.8, y: 0, opacity: 1, delay: 0.3 }
-      )
-      gsap.fromTo(
-        '.title',
-        { y: 150, opacity: 0 },
-        { duration: 0.8, y: 0, opacity: 1, delay: 0.5 }
-      )
-      gsap.fromTo(
-        '.hr',
-        { width: 0, opacity: 0 },
-        { duration: 0.8, width: '100%', opacity: 1, delay: 0.8 }
-      )
-      gsap.fromTo(
-        '.paragraph',
-        { y: 150, opacity: 0 },
-        { duration: 0.8, y: 0, opacity: 1, delay: 0.8 }
-      )
-      gsap.fromTo(
-        '.btn-primary',
-        { y: 150, opacity: 0 },
-        { duration: 0.8, y: 0, opacity: 1, delay: 0.8 }
-      )
     },
   },
 }
