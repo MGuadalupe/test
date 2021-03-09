@@ -117,7 +117,7 @@ export default {
         icon: 'images/icons/2.svg',
         title: 'Explora',
         paragraph:
-          'The Flex component has an essential role in building layouts in UIkit. A lot of components, for example the Grid as well as horizontal navigations, like the Navbar, Subnav, Breadcrumb, Pagination, Tab and Dotnav are built with flexbox and can be used together with the utility classes from this component.',
+          'The flex component has an essential role in building layouts in UIkit. A lot of components, for example the Grid as well as horizontal navigations, like the Navbar, Subnav, Breadcrumb, Pagination, Tab and Dotnav are built with flexbox and can be used together with the utility classes from this component.',
         image: 'images/hero-img-2.jpg',
       },
       {
