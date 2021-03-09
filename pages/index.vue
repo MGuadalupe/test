@@ -1,10 +1,6 @@
 <template>
   <div>
-    <div v-if="isLoading" class="uk-cover-container" uk-height-viewport>
-      <div class="uk-position-center uk-position-small">Loading...</div>
-    </div>
-
-    <div v-else>
+    <div>
       <nav
         class="uk-navbar uk-navbar-container uk-margin uk-position-absolute nav"
       >
@@ -123,7 +119,10 @@ export default {
     ],
   }),
   mounted() {
-    this.isLoading = false
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start()
+      setTimeout(() => this.$nuxt.$loading.finish(), 500)
+    })
     this.slideImage()
     gsap.fromTo(
       '.social-media',

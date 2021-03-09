@@ -20,7 +20,10 @@ export default {
     'uikit/dist/css/uikit.css',
     '~/assets/scss/styles.scss',
   ],
-
+  loading: {
+    color: '#ffffff',
+    duration: 5000,
+  },
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: ['~/plugins/uikit.js', '~/plugins/vueperslides'],
 
