@@ -1,13 +1,7 @@
 <template>
   <div>
     <div v-if="isLoading" class="uk-cover-container" uk-height-viewport>
-      <div class="uk-position-center uk-position-small">
-        <half-circle-spinner
-          :animation-duration="1000"
-          :size="60"
-          color="#ffffff"
-        />
-      </div>
+      <div class="uk-position-center uk-position-small">Loading...</div>
     </div>
 
     <div v-else>
@@ -94,13 +88,12 @@
 <script>
 import { VueperSlides, VueperSlide } from 'vueperslides'
 import 'vueperslides/dist/vueperslides.css'
-import { HalfCircleSpinner } from 'epic-spinners'
+
 import { gsap } from 'gsap'
 export default {
   components: {
     VueperSlides,
     VueperSlide,
-    HalfCircleSpinner,
   },
   data: () => ({
     textIndex: 0,
