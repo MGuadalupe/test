@@ -23,7 +23,9 @@ body,
 }
 .background-loading {
   height: 100vh;
-  width: 100vh;
+  width: 100%;
+  position: absolute;
+  z-index: 10000;
 }
 
 h1,

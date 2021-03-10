@@ -3,7 +3,7 @@
     <div>
       <div class="background-loading"></div>
       <nav
-        class="uk-navbar uk-navbar-container uk-margin uk-position-absolute nav"
+        class="uk-navbar uk-navbar-container uk-margin uk-position-absolute nav animated-av"
       >
         <div class="uk-navbar-right">
           <a class="uk-navbar-toggle" uk-navbar-toggle-icon href="#"></a>
@@ -16,7 +16,7 @@
           >
             <div class="uk-width-3-4 text-container">
               <div class="uk-flex">
-                <h3 class="indexSlider animatedContent">
+                <h3 class="indexSlider animated-content">
                   0{{ textIndex + 1 }}
                   <span>|</span>
                 </h3>
@@ -28,15 +28,15 @@
                       slider[textIndex].icon.indexOf('.')
                     )
                   "
-                  class="slide-icon animatedContent"
+                  class="slide-icon animated-content"
                 />
               </div>
 
-              <h2 class="title animatedContent">
+              <h2 class="title animated-content">
                 {{ slider[textIndex].title }}
               </h2>
               <hr class="hr" />
-              <div class="animatedContent">
+              <div class="animated-content">
                 <p class="paragraph">
                   {{ slider[textIndex].paragraph }}
                 </p>
@@ -46,7 +46,9 @@
                 </div>
               </div>
             </div>
-            <div class="social-media uk-width-3-4 uk-visible@s animatedContent">
+            <div
+              class="social-media uk-width-3-4 uk-visible@s animated-content"
+            >
               <span uk-icon="facebook" class="uk-margin-right"></span>
               <span uk-icon="twitter" class="uk-margin-right"></span>
               <span uk-icon="instagram"></span>
@@ -71,13 +73,13 @@
       </div>
       <div>
         <button
-          class="chevron-slide-2 animatedContent"
+          class="chevron-slide-2 animated-buttons"
           @click="$refs.slider.next(), slideImage()"
         >
           <span uk-icon="icon: chevron-right; ratio: 1.5"></span>
         </button>
         <button
-          class="chevron-slide-1 animatedContent"
+          class="chevron-slide-1 animated-buttons"
           @click="$refs.slider.previous(), slideImage()"
         >
           <span uk-icon="icon: chevron-left; ratio: 1.5"></span>
@@ -129,17 +131,26 @@ export default {
 
   mounted() {
     const tl = gsap.timeline()
-    const tlbg = gsap.timeline()
+    const tlbg = tl
+    const tlchevron = tl
+    const tdNav = tl
+
     tlbg.fromTo(
       '.background-loading',
       { opacity: 1, display: 'block' },
-      { duration: 0.5, opacity: 0, display: 'none' }
+      { duration: 1, opacity: 0, display: 'none' }
     )
     tl.fromTo(
       '.vueperslide:first-child',
       { scale: 2 },
       { duration: 0.8, scale: 1 }
     )
+    tlchevron.fromTo(
+      '.animated-buttons',
+      { y: 20, opacity: 0 },
+      { duration: 0.5, y: 0, opacity: 1, delay: 0.3, stagger: 0.2 }
+    )
+    tdNav.fromTo('.animated-nav', { opacity: 0 }, { duration: 0.5, opacity: 1 })
 
     this.animation()
   },
@@ -153,7 +164,7 @@ export default {
       const tl3 = gsap.timeline()
 
       tl2.fromTo(
-        '.animatedContent',
+        '.animated-content',
         { y: 20, opacity: 0 },
         { duration: 0.8, y: 0, opacity: 1, delay: 0.3, stagger: 0.2 }
       )
